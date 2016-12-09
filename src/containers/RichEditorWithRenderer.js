@@ -195,7 +195,7 @@ class RichEditor extends Component {
     console.log('the RAW content vvv');
     console.log(this.state);
     console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-    this.refs.rawInput.value = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()), null, 4);
+    this.refs.rawInput.value = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()), null, 2);
   }
 
   _insertContent() {
