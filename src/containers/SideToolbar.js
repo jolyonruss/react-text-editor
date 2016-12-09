@@ -41,7 +41,7 @@ class SideToolbar extends Component {
   }
   render() {
     const { isExpanded } = this.state;
-    const { editorState, onUploadImage, onToggle } = this.props;
+    const { editorState, onUploadImage, onUploadVideo, onAddActivity, onToggle } = this.props;
     return (
       <div style={this.props.style} className="side-toolbar">
         <i className="a-photo"
@@ -50,14 +50,24 @@ class SideToolbar extends Component {
         >
         </i>
         <i className="a-menu"
-           onMouseEnter={() => this.setState({ isExpanded: true })}
-           onMouseDown={(e) => e.preventDefault()}
-           onMouseLeave={() => this.setState({ isExpanded: false })}
-        >
+          onMouseEnter={() => this.setState({ isExpanded: true })}
+          onMouseDown={(e) => e.preventDefault()}
+          onMouseLeave={() => setTimeout(this.setState({ isExpanded: false }), 500)}
+          >
           {isExpanded
-           ? <SideToolbarExtras editorState={editorState} onToggle={onToggle} />
-           : null
-          }
+            ? <SideToolbarExtras editorState={editorState} onToggle={onToggle} />
+          : null
+        }
+      </i>
+        <i className="a-photo" style={{backgroundColor: 'red'}}
+           onMouseDown={e => e.preventDefault()}
+           onClick={onUploadVideo}
+        >
+        </i>
+        <i className="a-photo" style={{backgroundColor: 'blue'}}
+           onMouseDown={e => e.preventDefault()}
+           onClick={onAddActivity}
+        >
         </i>
       </div>
     )
